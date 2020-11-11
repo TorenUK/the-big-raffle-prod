@@ -1,0 +1,53 @@
+.welcome {
+  position: absolute;
+  width: 60%;
+  max-width: 1000px;
+  height: 60%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  text-align: center;
+  box-shadow: 1px 1px 5px 1px black;
+  border: 1px dashed #ececee;
+  border-radius: 5px;
+  color: white;
+  background-color: #575757;
+  background-image: url(../images/ticket.svg);
+  background-position: center;
+  background-size: 130%;
+}
+
+.welcome > svg {
+  width: 40%;
+  max-width: 300px;
+}
+
+#image0 {
+  transform-origin: center;
+}
+
+.welcome > h1 {
+  width: 60%;
+  font-size: 1.9rem;
+}
+
+.welcome > .MuiButton-root {
+  width: 180px !important;
+  height: 50px !important;
+  background-color: #e79110 !important;
+  box-shadow: 1px 1px 5px 1px black;
+}
+
+/* MEDIA QUERIES */
+
+/* 1150PX */
+
+@media only screen and (max-width: 875px) {
+  .welcome {
+    width: 100%;
+    height: 100%;
+  }
+}

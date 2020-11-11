@@ -1,0 +1,37 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  text-decoration: none;
+}
+
+a {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  font-family: "Poppins", sans-serif;
+}
+
+.app {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+
+  display: grid;
+  place-items: center;
+
+  background-size: 150%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* MEDIA QUERIES */
+
+/* MOBILE */
+
+@media only screen and (max-width: 875px) {
+  .app {
+    background-size: cover;
+  }
+}

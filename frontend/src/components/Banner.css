@@ -1,0 +1,20 @@
+.banner {
+  width: 100%;
+  flex: 0.15;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner > img {
+  max-width: 170px;
+  object-fit: contain;
+}
+
+/* MEDIA QUERIES */
+
+/* MOBILE */
+
+@media only screen and (max-width: 875px) {
+}
