@@ -10,9 +10,13 @@ import gsap from "gsap";
 
 const Welcome = () => {
   useEffect(() => {
-    gsap
-      .timeline()
-      .to("#image0", { rotate: 360, duration: 9, repeat: -1, ease: "none" });
+    gsap.timeline().to("#image0", {
+      rotate: 360,
+      duration: 9,
+      repeat: -1,
+      ease: "none",
+      transformOrigin: "center",
+    });
   }, []);
 
   return (

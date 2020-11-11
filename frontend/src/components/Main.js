@@ -7,33 +7,26 @@ import Footer from "./Footer";
 import Item from "./Item";
 
 //other
-import axios from "axios";
+import axios from "./axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Main = () => {
-  const [items, setItems] = useState([
-    { name: "toren", price: 2 },
-    { name: "toren", price: 2 },
-    { name: "toren", price: 2 },
-    { name: "toren", price: 2 },
-    { name: "toren", price: 2 },
-    { name: "toren", price: 2 },
-  ]);
+  const [items, setItems] = useState([]);
 
   // toast
   const notify = (name) => toast.dark(`1 ${name} ticket added to cart`);
 
-  // useEffect(() => {
-  //   // get items
-  //   const fetchData = async () => {
-  //     const response = await axios.get("/items");
+  useEffect(() => {
+    // get items
+    const fetchData = async () => {
+      const response = await axios.get("/items");
 
-  //     setItems(response.data);
-  //   };
+      setItems(response.data);
+    };
 
-  //   fetchData();
-  // }, []);
+    fetchData();
+  }, []);
 
   return (
     <div className="main">
