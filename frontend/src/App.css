@@ -22,8 +22,10 @@ a {
   width: 100vw;
   height: 100vh;
 
-  display: grid;
-  place-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   background-size: 150%;
   background-position: center;

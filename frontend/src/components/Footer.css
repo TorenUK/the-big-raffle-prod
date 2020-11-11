@@ -28,7 +28,7 @@
 }
 
 .footer__links {
-  width: 20%;
+  width: 50%;
   min-width: 250px;
   flex: 0.4;
 
@@ -51,4 +51,14 @@
   width: 100%;
 
   text-align: center;
+}
+
+/* MEDIA QUERIES */
+
+/* MOBILE */
+
+@media only screen and (max-width: 875px) {
+  .footer__links {
+    min-width: 100%;
+  }
 }

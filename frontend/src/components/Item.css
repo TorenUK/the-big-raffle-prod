@@ -24,13 +24,18 @@
 
 .item__image > img {
   object-fit: contain;
-  max-width: 55%;
+  min-width: 250px;
+  max-width: 45%;
 }
 
 .item__text {
   flex: 0.2;
 
   font-size: 1.1rem;
+}
+.item__text > p > span {
+  color: rgb(255, 217, 0);
+  font-weight: bold;
 }
 
 .item__interact {
@@ -49,8 +54,7 @@
 
 @media only screen and (max-width: 875px) {
   .item {
-    max-width: 100%;
     min-width: 100%;
-    min-height: 50%;
+    min-height: 80%;
   }
 }
