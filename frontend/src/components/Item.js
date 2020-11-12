@@ -15,7 +15,9 @@ const Item = ({ name, image, price, stock, notify }) => {
 
   return (
     <div className="item">
-      <div className="item__title">{name}</div>
+      <div className="item__title">
+        <h3>{name}</h3>
+      </div>
       <div className="item__image">
         <img src={image} alt="item" />
       </div>

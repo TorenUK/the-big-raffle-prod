@@ -4,6 +4,7 @@ import React from "react";
 import "./Cart.css";
 import Banner from "./Banner";
 import Footer from "./Footer";
+import CartItem from "./CartItem";
 
 // other
 import { Button } from "@material-ui/core";
@@ -22,7 +23,14 @@ const Cart = () => {
         <Banner />
         {cart?.length ? (
           <div className="cart__items">
-            <h1>cart items</h1>
+            {cart?.map((item) => (
+              <CartItem
+                name={item.name}
+                image={item.image}
+                price={item.price}
+                id={item.id}
+              />
+            ))}
           </div>
         ) : (
           <div className="cart__empty">

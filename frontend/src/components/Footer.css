@@ -18,12 +18,12 @@
   align-items: flex-end;
 }
 
-.footer__icons > .MuiSvgIcon-root {
+.footer__icons > a > .MuiSvgIcon-root {
   font-size: 2rem;
   cursor: pointer;
 }
 
-.footer__icons > .MuiSvgIcon-root:hover {
+.footer__icons > a > .MuiSvgIcon-root:hover {
   color: black;
 }
 
