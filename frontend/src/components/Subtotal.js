@@ -5,15 +5,17 @@ import "./Subtotal.css";
 
 // other
 import CurrencyFormat from "react-currency-format";
+import { Link } from "react-router-dom";
+import { Button } from "@material-ui/core";
 
 // redux
 import { useSelector } from "react-redux";
 import { selectCart } from "../features/cart/cartSlice";
 
-const Subtotal = () => {
+const Subtotal = ({ showButton }) => {
   const cart = useSelector(selectCart);
 
-  // calculate basket total
+  // calculate cart total
   const getCartTotal = (cart) =>
     cart?.reduce((amount, item) => parseInt(item.price) + amount, 0);
 
@@ -35,6 +37,13 @@ const Subtotal = () => {
           prefix={"£"}
         />
       </div>
+      {showButton !== false ? (
+        <div className="subtotal__links">
+          <Link to="/checkout">
+            <Button variant="outlined">proceed to checkout</Button>
+          </Link>
+        </div>
+      ) : null}
     </div>
   );
 };

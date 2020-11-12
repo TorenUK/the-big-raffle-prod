@@ -7,13 +7,14 @@
   justify-content: center;
   align-items: center;
 
-  background-image: url(../images/ticket-dark.svg);
+  background-image: url(../images/ticket-light.svg);
   background-position: center;
   background-size: contain;
   text-align: center;
   overflow: hidden;
   border-radius: 5px;
   box-shadow: 1px 1px 5px 1px black;
+  color: #fff;
 }
 
 .cartItem__image {
@@ -40,10 +41,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.cartItem__info > p {
-  font-size: 1.1rem;
 }
 
 .cartItem__interact {

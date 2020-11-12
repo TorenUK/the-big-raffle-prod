@@ -1,8 +1,18 @@
 .subtotal {
   width: 100%;
-  flex: 0.3;
+  height: 100%;
 
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
+}
+
+.subtotal__links {
+  flex: 0.8;
+}
+
+.subtotal__links > a > .MuiButton-root {
+  font-family: poppins, sans-serif;
+  background-color: orange;
 }

@@ -43,7 +43,11 @@ const Cart = () => {
             </Link>
           </div>
         )}
-        <Subtotal />
+        {cart?.length ? (
+          <div className="cart__subtotal">
+            <Subtotal />
+          </div>
+        ) : null}
         <Footer />
       </div>
     </>

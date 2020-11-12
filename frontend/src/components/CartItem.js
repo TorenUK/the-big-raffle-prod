@@ -20,8 +20,8 @@ const CartItem = ({ name, image, price, id, removeBtn }) => {
         <img src={image} />
       </div>
       <div className="cartItem__info">
-        <p>{name}</p>
-        <p>£{price}</p>
+        <h2>{name} ticket</h2>
+        <h2>£{price}</h2>
       </div>
       {removeBtn ? (
         <div className="cartItem__interact">

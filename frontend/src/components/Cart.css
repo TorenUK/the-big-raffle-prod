@@ -24,6 +24,10 @@
   overflow-y: scroll;
 }
 
+.cart__subtotal {
+  flex: 0.3;
+}
+
 .cart__empty {
   flex: 0.7;
   display: flex;

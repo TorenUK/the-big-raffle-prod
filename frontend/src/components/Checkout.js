@@ -1,0 +1,187 @@
+import React, { useEffect, useState } from "react";
+
+// components
+import "./Checkout.css";
+import Banner from "./Banner";
+import Footer from "./Footer";
+import Subtotal from "./Subtotal";
+import CartItem from "./CartItem";
+
+// other
+import axios from "./axios";
+import { useHistory } from "react-router-dom";
+import gsap from "gsap";
+import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+
+// redux
+import { useSelector, useDispatch } from "react-redux";
+import { selectCart, emptyCart } from "../features/cart/cartSlice";
+
+const Checkout = () => {
+  const dispatch = useDispatch();
+  const cart = useSelector(selectCart);
+
+  const [succeeded, setSucceeded] = useState(false);
+  const [error, setError] = useState(null);
+  const [processing, setProcessing] = useState("");
+  const [disabled, setDisabled] = useState(true);
+  const [clientSecret, setClientSecret] = useState("");
+  const [email, setEmail] = useState("");
+  const stripe = useStripe();
+  const elements = useElements();
+  const history = useHistory();
+
+  useEffect(() => {
+    gsap.fromTo(
+      "#stripe",
+      {
+        opacity: 0,
+        y: 300,
+      },
+      { opacity: 1, y: 0, duration: 0.5, ease: "ease-in-out" }
+    );
+  }, []);
+
+  const cardStyle = {
+    style: {
+      base: {
+        color: "#32325d",
+        fontFamily: "poppins, sans-serif",
+        fontSmoothing: "antialiased",
+        fontSize: "18px",
+        "::placeholder": {
+          color: "#32325d",
+        },
+      },
+      invalid: {
+        color: "#fa755a",
+        iconColor: "#fa755a",
+      },
+    },
+    hidePostalCode: true,
+  };
+
+  const handleChange = async (event) => {
+    // Listen for changes in the CardElement
+    // and display any errors as the customer types their card details
+    setDisabled(event.empty);
+    setError(event.error ? event.error.message : "");
+  };
+
+  const handleSubmit = async (ev) => {
+    ev.preventDefault();
+    setProcessing(true);
+    const payload = await stripe.confirmCardPayment(clientSecret, {
+      receipt_email: email,
+      payment_method: {
+        card: elements.getElement(CardElement),
+      },
+    });
+    if (payload.error) {
+      setError(`Payment failed ${payload.error.message}`);
+      setProcessing(false);
+    } else {
+      setError(null);
+      setProcessing(false);
+      setSucceeded(true);
+
+      // get the number of tickets ordered per product & store in new object
+      let obj = {};
+      let reqId, stock;
+
+      for (let i = 0; i < cart.length; i++) {
+        if (obj[cart[i].dbId]) {
+          obj[cart[i].dbId]++;
+        } else {
+          obj[cart[i].dbId] = 1;
+        }
+      }
+
+      // obj now has product id and amount of tickets as key:value pairs
+
+      // update number of tickets available in db // also reflected on the frontend
+
+      for (const id in obj) {
+        reqId = id;
+        stock = obj[id];
+
+        axios
+          .post(`/update/${reqId}`, {
+            stock: stock,
+          })
+          .then((res) => {
+            console.log(res.data);
+          })
+          .catch((err) => {
+            console.log("err -->", err);
+          });
+      }
+
+      // add new order to db
+      axios
+        .post("/orders", {
+          cart: cart,
+          email: email,
+        })
+
+        // destructure and assign the newOrder id from db -- add it to data layer.
+        .then((res) => {
+          const { _id } = res.data;
+          // dispatch(addCustomer(_id));
+          dispatch(emptyCart());
+          history.push("/order");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
+
+  return (
+    <div className="checkout">
+      <Banner />
+      <div className="checkout__header">
+        <h1>checkout</h1>
+      </div>
+      <div className="checkout__container">
+        {cart?.map((item) => (
+          <CartItem
+            name={item.name}
+            image={item.image}
+            price={item.price}
+            id={item.id}
+            removeBtn={false}
+          />
+        ))}
+      </div>
+      <div id="stripe" className="checkout__stripe">
+        <Subtotal showButton={false} />
+        <form id="payment-form" onSubmit={handleSubmit}>
+          <input
+            required
+            name="email"
+            type="text"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Enter email address"
+          />
+          <CardElement
+            id="card-element"
+            options={cardStyle}
+            onChange={handleChange}
+          />
+
+          <button disabled={processing || disabled || succeeded}>
+            <span>{processing ? <p>processing</p> : "pay now"}</span>
+          </button>
+
+          {error && <div>{error}</div>}
+          {/* Show a success message upon completion */}
+        </form>
+      </div>
+      <Footer />
+    </div>
+  );
+};
+
+export default Checkout;
