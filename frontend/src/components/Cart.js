@@ -5,6 +5,7 @@ import "./Cart.css";
 import Banner from "./Banner";
 import Footer from "./Footer";
 import CartItem from "./CartItem";
+import Subtotal from "./Subtotal";
 
 // other
 import { Button } from "@material-ui/core";
@@ -29,6 +30,7 @@ const Cart = () => {
                 image={item.image}
                 price={item.price}
                 id={item.id}
+                removeBtn
               />
             ))}
           </div>
@@ -37,11 +39,11 @@ const Cart = () => {
             <h1>your cart is empty</h1>
             <Link to="/main">
               {" "}
-              <Button variant="contained">continue shopping</Button>
+              <Button variant="outlined">continue shopping</Button>
             </Link>
           </div>
         )}
-
+        <Subtotal />
         <Footer />
       </div>
     </>

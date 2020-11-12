@@ -8,7 +8,7 @@ import Cart from "./components/Cart";
 
 // other
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import illustration from "./images/illustration.svg";
+import illustration from "./images/illustration-dark.svg";
 
 let style = { backgroundImage: `url(${illustration})` };
 

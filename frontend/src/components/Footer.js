@@ -9,30 +9,35 @@ import InstagramIcon from "@material-ui/icons/Instagram";
 import HomeOutlinedIcon from "@material-ui/icons/HomeOutlined";
 import { Link } from "react-router-dom";
 
+// redux
+import { useSelector } from "react-redux";
+import { selectCart } from "../features/cart/cartSlice";
+
 const Footer = () => {
+  const cart = useSelector(selectCart);
+
   return (
     <div className="footer">
       <div className="footer__icons">
-        <Link to="/cart">
-          <ShoppingCartOutlinedIcon />
-        </Link>
-        <a href="https://www.instagram.com/thebigraffle/" target="blank">
-          <InstagramIcon />
-        </a>
-        <Link to="/main">
-          <HomeOutlinedIcon />
-        </Link>
-      </div>
-      <div className="footer__links">
-        <a className="link">
-          <p>link</p>
-        </a>
-        <a className="link">
-          <p>previous winners</p>
-        </a>
-        <a className="link">
-          <p>link</p>
-        </a>
+        <div className="footer__icons__link">
+          {" "}
+          <Link to="/cart">
+            <ShoppingCartOutlinedIcon />
+          </Link>
+          {cart?.length ? <p>{cart?.length}</p> : null}
+        </div>
+        <div className="footer__icons__link">
+          {" "}
+          <Link to="/main">
+            <HomeOutlinedIcon />
+          </Link>
+        </div>
+        <div className="footer__icons__link">
+          {" "}
+          <a href="https://www.instagram.com/thebigraffle/" target="blank">
+            <InstagramIcon />
+          </a>
+        </div>
       </div>
       <p className="footer__bottom">2020 THE BIG RAFFLE ALL RIGHTS RESERVED</p>
     </div>

@@ -1,10 +1,10 @@
 .footer {
-  flex: 0.15;
+  flex: 0.1;
   width: 100%;
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -18,12 +18,29 @@
   align-items: flex-end;
 }
 
-.footer__icons > a > .MuiSvgIcon-root {
-  font-size: 2rem;
-  cursor: pointer;
+.footer__icons__link {
+  position: relative;
 }
 
-.footer__icons > a > .MuiSvgIcon-root:hover {
+.footer__icons__link > p {
+  position: absolute;
+  top: 0;
+  right: -10px;
+
+  color: #f1c40f;
+  z-index: 100;
+  text-align: center;
+  font-weight: bold;
+}
+
+.footer__icons__link > a > .MuiSvgIcon-root {
+  font-size: 2rem;
+  cursor: pointer;
+
+  transition: all 0.2s ease-in-out;
+}
+
+.footer__icons__link > a > .MuiSvgIcon-root:hover {
   color: black;
 }
 

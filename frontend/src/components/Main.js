@@ -42,7 +42,7 @@ const Main = () => {
               notify={notify}
             />
             <ToastContainer
-              position="bottom-center"
+              position="top-center"
               autoClose={2000}
               hideProgressBar={false}
               newestOnTop={true}

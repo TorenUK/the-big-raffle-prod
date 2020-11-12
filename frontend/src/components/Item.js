@@ -5,6 +5,7 @@ import "./Item.css";
 
 // other
 import { Button } from "@material-ui/core";
+import { v4 as uuidv4 } from "uuid";
 
 // redux
 import { useDispatch } from "react-redux";
@@ -36,6 +37,7 @@ const Item = ({ name, image, price, stock, notify }) => {
                 name: name,
                 image: image,
                 price: price,
+                id: uuidv4(),
               })
             );
           }}

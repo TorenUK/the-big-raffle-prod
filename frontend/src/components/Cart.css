@@ -15,7 +15,7 @@
 
 .cart__items {
   width: 90%;
-  flex: 0.7;
+  flex: 0.4;
 
   display: flex;
   flex-wrap: wrap;
@@ -32,6 +32,12 @@
   align-items: center;
 
   color: white;
+}
+
+.cart__empty > a > .MuiButton-root {
+  font-family: poppins, sans-serif;
+  color: white;
+  background-color: black;
 }
 
 /* MEDIA QUERIES */
