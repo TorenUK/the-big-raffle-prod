@@ -52,7 +52,7 @@ const Welcome = () => {
           />
         </defs>
       </svg>
-      <h1>WIN LUXURY ITEMS AND CASH PRIZES</h1>
+      <h1>WIN LUXURY ITEMS & CASH PRIZES</h1>
       <div className="welcome__links">
         <Button>
           <Link to="/login">LOGIN</Link>

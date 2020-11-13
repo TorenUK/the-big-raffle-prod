@@ -1,6 +1,6 @@
 const express = require("express");
-const Item = require("../models/dbItems");
 const router = express.Router();
+const Item = require("../models/dbItems");
 
 router.get("/items", (req, res) => {
   Item.find((err, data) => {

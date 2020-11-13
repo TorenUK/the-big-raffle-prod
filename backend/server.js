@@ -4,6 +4,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 
 const itemRoutes = require("./routes/itemRoutes");
+const authRoutes = require("./routes/authroutes");
 
 // app setup
 const app = express();
@@ -36,6 +37,7 @@ app.get("/", (req, res) => {
 });
 
 app.use(itemRoutes);
+app.use(authRoutes);
 
 // listen
 app.listen(port, () => console.log(`listening on ${port}`));
