@@ -3,8 +3,7 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 
-// schema
-const Items = require("./models/dbItems");
+const itemRoutes = require("./routes/itemRoutes");
 
 // app setup
 const app = express();
@@ -36,15 +35,7 @@ app.get("/", (req, res) => {
   res.status(200).send("welcome to TBR server");
 });
 
-app.get("/items", (req, res) => {
-  Items.find((err, data) => {
-    if (err) {
-      res.status(500).send(err);
-    } else {
-      res.status(200).send(data);
-    }
-  });
-});
+app.use(itemRoutes);
 
 // listen
 app.listen(port, () => console.log(`listening on ${port}`));
