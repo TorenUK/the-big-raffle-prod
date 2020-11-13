@@ -1,7 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 // components
 import "./Welcome.css";
+import Login from "../components/Login";
+import SignUp from "../components/SignUp";
 
 // other
 import { Button } from "@material-ui/core";
@@ -12,7 +14,7 @@ const Welcome = () => {
   useEffect(() => {
     gsap.timeline().to("#image0", {
       rotate: 360,
-      duration: 9,
+      duration: 13,
       repeat: -1,
       ease: "none",
       transformOrigin: "center",
@@ -53,6 +55,9 @@ const Welcome = () => {
         </defs>
       </svg>
       <h1>WIN LUXURY ITEMS & CASH PRIZES</h1>
+      <div className="welcome__login">
+        <Login />
+      </div>
       <div className="welcome__links">
         <Button>
           <Link to="/login">LOGIN</Link>

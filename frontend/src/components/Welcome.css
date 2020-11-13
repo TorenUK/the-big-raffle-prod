@@ -2,7 +2,7 @@
   position: absolute;
   width: 60%;
   max-width: 1000px;
-  height: 60%;
+  height: 70%;
 
   display: flex;
   flex-direction: column;
@@ -29,7 +29,7 @@
 }
 
 .welcome > h1 {
-  flex: 0.2;
+  flex: 0.1;
   width: 50%;
   margin-top: 10px;
 
@@ -37,11 +37,21 @@
   flex-direction: column;
   justify-content: center;
 
-  font-size: 1.9rem;
+  font-size: 2.2rem;
+}
+
+.welcome__login {
+  flex: 0.1;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .welcome__links {
-  flex: 0.3;
+  flex: 0.4;
+
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -50,6 +60,7 @@
 .welcome__links > .MuiButton-root:nth-of-type(1) {
   width: 180px !important;
   height: 40px !important;
+
   background-color: #109c1c !important;
   box-shadow: 1px 1px 5px 1px black;
 }
@@ -57,13 +68,14 @@
 .welcome__links > .MuiButton-root:nth-of-type(2) {
   width: 180px !important;
   height: 40px !important;
+
   background-color: #e79110 !important;
   box-shadow: 1px 1px 5px 1px black;
 }
 
 /* MEDIA QUERIES */
 
-/* 1150PX */
+/* 875PX */
 
 @media only screen and (max-width: 875px) {
   .welcome {
@@ -74,5 +86,13 @@
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
+  }
+
+  .welcome > h1 {
+    width: 80%;
+  }
+
+  .welcome__links {
+    flex: 0.3;
   }
 }
