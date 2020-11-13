@@ -53,9 +53,14 @@ const Welcome = () => {
         </defs>
       </svg>
       <h1>WIN LUXURY ITEMS AND CASH PRIZES</h1>
-      <Button>
-        <Link to="/main">ENTER SITE</Link>
-      </Button>
+      <div className="welcome__links">
+        <Button>
+          <Link to="/login">LOGIN</Link>
+        </Button>
+        <Button>
+          <Link to="/main">SIGN UP</Link>
+        </Button>
+      </div>
     </div>
   );
 };
