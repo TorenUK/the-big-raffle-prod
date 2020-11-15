@@ -89,7 +89,7 @@
   }
 
   .welcome > h1 {
-    width: 95%;
+    width: 65%;
   }
 
   .welcome__login {
@@ -98,5 +98,10 @@
 
   .welcome__links {
     flex: 0.4;
+    justify-content: center;
+  }
+
+  .welcome__links :nth-of-type(1) {
+    margin: 20px 0;
   }
 }
