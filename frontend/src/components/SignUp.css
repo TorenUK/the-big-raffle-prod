@@ -1,0 +1,51 @@
+.signUp {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: transparent;
+}
+
+.signUp > form {
+  width: 100%;
+  padding: 10px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.signUp > form > input {
+  width: 50%;
+  max-width: 300px;
+  margin: 0.5rem;
+  padding: 5px;
+
+  font-family: poppins, sans-serif;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px 1px black;
+}
+
+.signUp > form > .MuiButton-root {
+  width: 180px !important;
+  height: 40px !important;
+  margin: 20px;
+
+  font-family: poppins, sans-serif;
+  color: white;
+  background-color: #e79110 !important;
+  box-shadow: 1px 1px 5px 1px black;
+}
+/* MEDIA QUERIES */
+
+/* 875PX */
+
+@media only screen and (max-width: 875px) {
+  .signUp > form > input {
+    width: 80%;
+  }
+}

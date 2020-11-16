@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const cookieParser = require("cookie-parser");
 
 const itemRoutes = require("./routes/itemRoutes");
 const authRoutes = require("./routes/authroutes");
@@ -13,6 +14,7 @@ const port = process.env.port || 4242;
 // middleware
 app.use(express.json());
 app.use(cors());
+app.use(cookieParser());
 
 // db config
 const mongoAdminPassword = process.env.MONGO_ADMIN_PASSWORD;

@@ -24,6 +24,7 @@
 }
 
 .welcome > svg {
+  flex: 0.4;
   width: 40%;
   max-width: 300px;
 }
@@ -41,7 +42,7 @@
 }
 
 .welcome__login {
-  flex: 0.1;
+  flex: 0.5;
   width: 100%;
 
   display: flex;
@@ -49,27 +50,11 @@
   align-items: center;
 }
 
-.welcome__links {
-  flex: 0.4;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-}
-
 .welcome__links > .MuiButton-root:nth-of-type(1) {
   width: 180px !important;
   height: 40px !important;
 
   background-color: #109c1c !important;
-  box-shadow: 1px 1px 5px 1px black;
-}
-
-.welcome__links > .MuiButton-root:nth-of-type(2) {
-  width: 180px !important;
-  height: 40px !important;
-
-  background-color: #e79110 !important;
   box-shadow: 1px 1px 5px 1px black;
 }
 
@@ -94,14 +79,5 @@
 
   .welcome__login {
     margin-top: 30px;
-  }
-
-  .welcome__links {
-    flex: 0.4;
-    justify-content: center;
-  }
-
-  .welcome__links :nth-of-type(1) {
-    margin: 20px 0;
   }
 }
