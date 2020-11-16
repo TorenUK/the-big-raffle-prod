@@ -1,15 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const Item = require("../models/dbItems");
+const itemController = require("../controllers/itemController");
 
-router.get("/items", (req, res) => {
-  Item.find((err, data) => {
-    if (err) {
-      res.status(500).send(err);
-    } else {
-      res.status(200).send(data);
-    }
-  });
-});
+router.get("/items", itemController.item_index);
+router.get("/items/:id", itemController.item_individual);
 
 module.exports = router;
