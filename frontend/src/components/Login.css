@@ -10,17 +10,20 @@
 }
 
 .login > form {
-  width: 100%;
+  width: 50%;
   padding: 10px;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px 1px black;
 }
 
 .login > form > input {
-  width: 50%;
+  width: 95%;
   max-width: 300px;
   margin: 0.5rem;
   padding: 5px;
@@ -46,6 +49,10 @@
 /* 875PX */
 
 @media only screen and (max-width: 875px) {
+  .login > form {
+    width: 90%;
+  }
+
   .login > form > input {
     width: 80%;
   }
