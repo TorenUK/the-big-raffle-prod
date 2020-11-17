@@ -7,8 +7,13 @@ import "./Login.css";
 import { Button } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 
+// redux
+import { useDispatch } from "react-redux";
+import { login } from "../features/user/userSlice";
+
 const Login = () => {
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -38,6 +43,7 @@ const Login = () => {
         setPasswordErr(data.errors.password);
       }
       if (data.user) {
+        dispatch(login(email));
         history.push("/main");
       }
     } catch (err) {
@@ -57,7 +63,7 @@ const Login = () => {
           name="email"
           type="email"
           placeholder="email"
-          autoComplete="true"
+          autoComplete="email"
           required
         />
         <div className="email error">{emailErr}</div>

@@ -10,9 +10,16 @@ import Item from "./Item";
 import axios from "./axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useHistory } from "react-router-dom";
+
+// redux
+import { useSelector } from "react-redux";
+import { selectUser } from "../features/user/userSlice";
 
 const Main = () => {
   const [items, setItems] = useState([]);
+  const user = useSelector(selectUser);
+  const history = useHistory();
 
   // toast
   const notify = (name) => toast.dark(`1 ${name} ticket added to cart`);

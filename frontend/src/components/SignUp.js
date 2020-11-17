@@ -57,7 +57,7 @@ const SignUp = () => {
           name="email"
           type="email"
           placeholder="email"
-          autoComplete="true"
+          autoComplete="email"
           required
         />
         <div className="email error">{emailErr}</div>

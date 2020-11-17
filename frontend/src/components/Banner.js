@@ -7,9 +7,16 @@ import "./Banner.css";
 import logo from "../images/logo-br.svg";
 import PersonOutlineOutlinedIcon from "@material-ui/icons/PersonOutlineOutlined";
 import { Button } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
+
+// redux
+import { useSelector, useDispatch } from "react-redux";
+import { selectUser, logout } from "../features/user/userSlice";
 
 const Banner = () => {
-  const [user, setUser] = useState("td_fraser@hotmail.co.uk");
+  const user = useSelector(selectUser);
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   return (
     <div className="banner">
@@ -18,13 +25,27 @@ const Banner = () => {
         <h1>THE BIG RAFFLE</h1>
       </div>
       <div className="banner__right">
-        <div className="banner__right__user">
-          <PersonOutlineOutlinedIcon />
-          <p>{user}</p>
-        </div>
-        <div className="banner__right__logout">
-          <Button variant="outlined">logout</Button>
-        </div>
+        {user ? (
+          <>
+            <div className="banner__right__user">
+              <PersonOutlineOutlinedIcon />
+              <p>{user}</p>
+            </div>
+            <div className="banner__right__logout">
+              <Button
+                onClick={() => {
+                  if (user) {
+                    dispatch(logout());
+                    history.push("/");
+                  }
+                }}
+                variant="outlined"
+              >
+                logout
+              </Button>
+            </div>
+          </>
+        ) : null}
       </div>
     </div>
   );

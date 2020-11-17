@@ -36,6 +36,9 @@
   width: 180px !important;
   height: 40px !important;
   margin: 20px;
+  padding: 0;
+  vertical-align: middle;
+  text-align: center;
 
   font-family: poppins, sans-serif;
   color: white;
