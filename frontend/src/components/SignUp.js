@@ -6,19 +6,43 @@ import "./SignUp.css";
 // other
 import { Button } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
-import axios from "./axios";
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const [emailErr, setEmailErr] = useState("");
+  const [passwordErr, setPasswordErr] = useState("");
+
+  const history = useHistory();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    axios.post("/user/create", {
-      email: email,
-      password: password,
-    });
+    // reset errors
+    setEmailErr("");
+    setPasswordErr("");
+
+    try {
+      const res = await fetch("http://localhost:4242/user/create", {
+        method: "POST",
+        body: JSON.stringify({ email, password }),
+        headers: { "Content-Type": "application/json" },
+      });
+      const data = await res.json();
+      console.log(data);
+      if (data.errors) {
+        setEmailErr(data.errors.email);
+        setPasswordErr(data.errors.password);
+      }
+      if (data.user) {
+        history.push("/main");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+    {
+    }
   };
 
   return (
@@ -34,7 +58,7 @@ const SignUp = () => {
           autoComplete="true"
           required
         />
-        <div className="email error"></div>
+        <div className="email error">{emailErr}</div>
         <input
           onChange={(e) => {
             setPassword(e.target.value);
@@ -45,8 +69,8 @@ const SignUp = () => {
           autoComplete="true"
           required
         />
-        <div className="password error"></div>
-        <Button onClick={handleSubmit}>Sign Up</Button>
+        <div className="password error">{passwordErr}</div>
+        <Button onClick={handleSubmit}>Log in</Button>
       </form>
     </div>
   );
