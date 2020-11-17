@@ -26,11 +26,13 @@ const SignUp = () => {
     try {
       const res = await fetch("http://localhost:4242/user/create", {
         method: "POST",
+        withCredentials: true,
         body: JSON.stringify({ email, password }),
         headers: { "Content-Type": "application/json" },
       });
       const data = await res.json();
       console.log(data);
+      // update error div
       if (data.errors) {
         setEmailErr(data.errors.email);
         setPasswordErr(data.errors.password);
@@ -70,7 +72,7 @@ const SignUp = () => {
           required
         />
         <div className="password error">{passwordErr}</div>
-        <Button onClick={handleSubmit}>Log in</Button>
+        <Button onClick={handleSubmit}>Sign Up</Button>
       </form>
     </div>
   );

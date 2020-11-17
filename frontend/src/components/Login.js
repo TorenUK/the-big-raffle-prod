@@ -13,10 +13,38 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
+  const [emailErr, setEmailErr] = useState("");
+  const [passwordErr, setPasswordErr] = useState("");
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(email, password);
+    // reset errors
+    setEmailErr("");
+    setPasswordErr("");
+
+    try {
+      const res = await fetch("http://localhost:4242/user/login", {
+        method: "POST",
+        withCredentials: true,
+        body: JSON.stringify({ email, password }),
+        headers: { "Content-Type": "application/json" },
+      });
+      const data = await res.json();
+      console.log(data);
+      // update error divs
+      if (data.errors) {
+        setEmailErr(data.errors.email);
+        setPasswordErr(data.errors.password);
+      }
+      if (data.user) {
+        history.push("/main");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+    {
+    }
   };
 
   return (
@@ -32,7 +60,7 @@ const Login = () => {
           autoComplete="true"
           required
         />
-        <div className="email error"></div>
+        <div className="email error">{emailErr}</div>
         <input
           onChange={(e) => {
             setPassword(e.target.value);
@@ -43,7 +71,7 @@ const Login = () => {
           autoComplete="true"
           required
         />
-        <div className="password error"></div>
+        <div className="password error">{passwordErr}</div>
         <Button onClick={handleSubmit}>Login</Button>
       </form>
     </div>

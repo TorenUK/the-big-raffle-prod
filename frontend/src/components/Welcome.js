@@ -56,6 +56,7 @@ const Welcome = () => {
       </svg>
       <h1>WIN LUXURY ITEMS & CASH PRIZES</h1>
       <div className="welcome__login">
+        <Login />
         <SignUp />
       </div>
     </div>

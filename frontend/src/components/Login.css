@@ -30,6 +30,17 @@
   box-shadow: 1px 1px 5px 1px black;
 }
 
+.login > form > .MuiButton-root {
+  width: 180px !important;
+  height: 40px !important;
+  margin: 20px;
+
+  font-family: poppins, sans-serif;
+  color: white;
+  background-color: #109c1c !important;
+  box-shadow: 1px 1px 5px 1px black;
+}
+
 /* MEDIA QUERIES */
 
 /* 875PX */
