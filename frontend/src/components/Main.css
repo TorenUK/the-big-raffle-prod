@@ -33,4 +33,7 @@
     width: 100%;
     height: 100%;
   }
+  .main__items {
+    flex: 0.6;
+  }
 }

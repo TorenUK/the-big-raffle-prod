@@ -7,9 +7,53 @@
   align-items: center;
 }
 
-.banner > img {
-  max-width: 170px;
+.banner__left {
+  flex: 0.5;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner__left > h1 {
+  font-size: 2.5rem;
+}
+
+.banner__left > img {
+  max-width: 50px;
+  margin: 0 10px;
   object-fit: contain;
+}
+
+.banner__right {
+  flex: 0.5;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.banner__right__logout > .MuiButton-root {
+  width: 100px !important;
+  height: 20px !important;
+  margin: 15px;
+
+  font-family: poppins, sans-serif;
+  color: white;
+
+  box-shadow: 1px 1px 5px 1px black;
+}
+
+.banner__right__user {
+  display: flex;
+  align-items: center;
+}
+
+.banner__right__user > p {
+  margin: 0 10px;
+
+  text-decoration: underline;
 }
 
 /* MEDIA QUERIES */
@@ -17,4 +61,16 @@
 /* MOBILE */
 
 @media only screen and (max-width: 875px) {
+  .banner {
+    flex: 0.3;
+    flex-direction: column;
+  }
+
+  .banner__left {
+    flex-direction: column;
+  }
+
+  .banner__left > h1 {
+    font-size: 2rem;
+  }
 }
