@@ -49,9 +49,16 @@
 
 @media only screen and (max-width: 875px) {
   .signUp > form {
-    width: 90%;
+    width: 100%;
+
+    box-shadow: none;
   }
   .signUp > form > input {
-    width: 80%;
+    width: 60%;
+  }
+
+  .signUp > form > .MuiButton-root {
+    width: 100px !important;
+    height: 30px !important;
   }
 }

@@ -50,10 +50,15 @@
 
 @media only screen and (max-width: 875px) {
   .login > form {
-    width: 90%;
+    width: 100%;
+    box-shadow: none;
   }
 
   .login > form > input {
-    width: 80%;
+    width: 60%;
+  }
+  .login > form > .MuiButton-root {
+    width: 100px !important;
+    height: 30px !important;
   }
 }
