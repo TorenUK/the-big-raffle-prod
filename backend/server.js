@@ -2,19 +2,21 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const cookieParser = require("cookie-parser");
 
 const itemRoutes = require("./routes/itemRoutes");
 const authRoutes = require("./routes/authroutes");
 
 // app setup
 const app = express();
-const port = process.env.port || 4242;
 
 // middleware
-app.use(express.json());
 app.use(cors());
-app.use(cookieParser());
+app.use(express.json());
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-control-Allow-Headers", "*");
+  next();
+});
 
 // db config
 const mongoAdminPassword = process.env.MONGO_ADMIN_PASSWORD;
@@ -42,4 +44,4 @@ app.use(itemRoutes);
 app.use(authRoutes);
 
 // listen
-app.listen(port, () => console.log(`listening on ${port}`));
+app.listen(process.env.PORT || 80, () => console.log(`listening`));

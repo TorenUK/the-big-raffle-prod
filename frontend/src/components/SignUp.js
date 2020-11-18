@@ -24,7 +24,7 @@ const SignUp = () => {
     setPasswordErr("");
 
     try {
-      const res = await fetch("http://localhost:4242/user/create", {
+      const res = await fetch("https://tbr-prod.herokuapp.com/user/create", {
         method: "POST",
         withCredentials: true,
         body: JSON.stringify({ email, password }),

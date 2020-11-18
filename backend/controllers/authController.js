@@ -35,15 +35,6 @@ const handleErrors = (err) => {
   return errors;
 };
 
-//create jwt
-const maxAge = 3 * 24 * 60 * 60;
-
-const createToken = (id) => {
-  return jwt.sign({ id }, "the secret", {
-    expiresIn: maxAge,
-  });
-};
-
 const user_create = async (req, res) => {
   const { email, password } = req.body;
 
