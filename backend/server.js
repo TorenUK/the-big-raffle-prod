@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 
 const itemRoutes = require("./routes/itemRoutes");
 const authRoutes = require("./routes/authroutes");
+const orderRoutes = require("./routes/orderRoutes");
 
 // app setup
 const app = express();
@@ -41,6 +42,7 @@ app.get("/", (req, res) => {
 
 app.use(itemRoutes);
 app.use(authRoutes);
+app.use(orderRoutes);
 
 // listen
-app.listen(process.env.PORT || 80, () => console.log(`listening`));
+app.listen(process.env.PORT || 8080, () => console.log(`listening`));

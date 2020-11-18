@@ -1,6 +1,6 @@
 // user_create, user_login
 
-const User = require("../models/user");
+const User = require("../models/dbUser");
 
 // handle errors
 const handleErrors = (err) => {

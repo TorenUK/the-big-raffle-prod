@@ -13,6 +13,7 @@
   text-align: center;
   overflow: hidden;
   border-radius: 5px;
+  border: 2px dotted white;
   box-shadow: 1px 1px 5px 1px black;
   color: #fff;
 }
@@ -54,6 +55,6 @@
 }
 
 .cartItem__interact > .MuiButton-root {
-  background-color: red;
+  background-color: rgb(219, 18, 18);
   color: white;
 }

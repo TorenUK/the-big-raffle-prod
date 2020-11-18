@@ -16,6 +16,7 @@ import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 // redux
 import { useSelector, useDispatch } from "react-redux";
 import { selectCart, emptyCart } from "../features/cart/cartSlice";
+import { selectUser } from "../features/user/userSlice";
 
 const Checkout = () => {
   const dispatch = useDispatch();
@@ -27,6 +28,7 @@ const Checkout = () => {
   const [disabled, setDisabled] = useState(true);
   const [clientSecret, setClientSecret] = useState("");
   const [email, setEmail] = useState("");
+
   const stripe = useStripe();
   const elements = useElements();
   const history = useHistory();
