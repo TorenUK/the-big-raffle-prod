@@ -22,17 +22,16 @@ app.use((req, res, next) => {
 const mongoAdminPassword = process.env.MONGO_ADMIN_PASSWORD;
 const connection_url = `mongodb+srv://admin:${mongoAdminPassword}@cluster0.nmelt.mongodb.net/TBR?retryWrites=true&w=majority`;
 
-mongoose.connect(connection_url, {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useUnifiedTopology: true,
-});
-
-const connection = mongoose.connection;
-
-connection.once("open", () => {
-  console.log("connected to mongodb");
-});
+mongoose
+  .connect(connection_url, {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    console.log("connected to mongodb");
+  })
+  .catch((err) => console.log(err));
 
 // routes
 

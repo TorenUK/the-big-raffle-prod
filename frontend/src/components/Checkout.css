@@ -28,7 +28,7 @@
 }
 
 .checkout__stripe {
-  width: 100%;
+  width: 90%;
 
   flex: 0.3;
   display: flex;
@@ -36,8 +36,8 @@
   justify-content: center;
   align-items: center;
 
-  color: #000;
-  background-color: #fff;
+  color: #fff;
+  background-color: rgba(31, 30, 30, 0.158);
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
@@ -65,4 +65,31 @@
   align-self: center;
 
   font-family: poppins, sans-serif;
+  background-color: orange;
+  border-radius: 5px;
+}
+
+/* MEDIA QUERIES */
+
+/* MOBILE */
+
+@media only screen and (max-width: 875px) {
+  .checkout {
+    width: 100%;
+    height: 100%;
+  }
+
+  .checkout__container {
+    width: 100%;
+  }
+  .checkout__stripe {
+    width: 100%;
+  }
+  .checkout__stripe > form {
+    width: 100%;
+  }
+  .checkout__stripe > form > input {
+    width: 60%;
+    margin-bottom: 10px;
+  }
 }

@@ -45,12 +45,12 @@ const Checkout = () => {
   const cardStyle = {
     style: {
       base: {
-        color: "#32325d",
+        color: "#000",
         fontFamily: "poppins, sans-serif",
         fontSmoothing: "antialiased",
         fontSize: "18px",
         "::placeholder": {
-          color: "#32325d",
+          color: "#fff",
         },
       },
       invalid: {

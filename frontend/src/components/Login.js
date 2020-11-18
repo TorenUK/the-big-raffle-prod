@@ -29,7 +29,7 @@ const Login = () => {
     setPasswordErr("");
 
     try {
-      const res = await fetch("https://tbr-prod.herokuapp.com//user/login", {
+      const res = await fetch("https://tbr-prod.herokuapp.com/user/login", {
         method: "POST",
         withCredentials: true,
         body: JSON.stringify({ email, password }),
