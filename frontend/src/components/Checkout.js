@@ -24,7 +24,8 @@ const Checkout = () => {
   const user = useSelector(selectUser);
 
   const [name, setName] = useState("");
-  const [address, setAddress] = useState("");
+  const [line1, setLine1] = useState("");
+  const [postcode, setPostcode] = useState("");
 
   const [succeeded, setSucceeded] = useState(false);
   const [error, setError] = useState(null);
@@ -110,58 +111,22 @@ const Checkout = () => {
       setError(null);
       setProcessing(false);
       setSucceeded(true);
+
+      axios
+        .post("/order/create", {
+          email: user,
+          name: name,
+          address: {
+            line1: line1,
+            postcode: postcode,
+          },
+          items: cart,
+        })
+        .then((response) => console.log(response.data))
+        .catch((err) => console.log(err));
+
       dispatch(emptyCart());
       history.push("/order");
-
-      // // get the number of tickets ordered per product & store in new object
-      // let obj = {};
-      // let reqId, stock;
-
-      // for (let i = 0; i < cart.length; i++) {
-      //   if (obj[cart[i].dbId]) {
-      //     obj[cart[i].dbId]++;
-      //   } else {
-      //     obj[cart[i].dbId] = 1;
-      //   }
-      // }
-
-      // // obj now has product id and amount of tickets as key:value pairs
-
-      // // update number of tickets available in db // also reflected on the frontend
-
-      // for (const id in obj) {
-      //   reqId = id;
-      //   stock = obj[id];
-
-      //   axios
-      //     .post(`/update/${reqId}`, {
-      //       stock: stock,
-      //     })
-      //     .then((res) => {
-      //       console.log(res.data);
-      //     })
-      //     .catch((err) => {
-      //       console.log("err -->", err);
-      //     });
-      // }
-
-      // // add new order to db
-      // axios
-      //   .post("/orders", {
-      //     cart: cart,
-      //     email: email,
-      //   })
-
-      //   // destructure and assign the newOrder id from db -- add it to data layer.
-      //   .then((res) => {
-      //     const { _id } = res.data;
-      //     // dispatch(addCustomer(_id));
-      //     dispatch(emptyCart());
-      //     history.push("/order");
-      //   })
-      //   .catch((err) => {
-      //     console.log(err);
-      //   });
     }
   };
 
@@ -198,9 +163,16 @@ const Checkout = () => {
             required
             name="line1"
             type="text"
+            onChange={(e) => setLine1(e.target.value)}
             placeholder="address line 1"
           />
-          <input required name="postcode" type="text" placeholder="postcode" />
+          <input
+            required
+            name="postcode"
+            type="text"
+            onChange={(e) => setPostcode(e.target.value)}
+            placeholder="postcode"
+          />
           <div className="checkout__element">
             <CardElement
               id="card-element"
