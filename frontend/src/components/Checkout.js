@@ -33,6 +33,15 @@ const Checkout = () => {
   const elements = useElements();
   const history = useHistory();
 
+  const getCartTotal = (cart) => {
+    let total = 0;
+    cart.map((item) => {
+      total += item.price;
+    });
+
+    return total;
+  };
+
   useEffect(() => {
     gsap.fromTo(
       "#stripe",
@@ -43,6 +52,18 @@ const Checkout = () => {
       { opacity: 1, y: 0, duration: 0.5, ease: "ease-in-out" }
     );
   }, []);
+
+  useEffect(() => {
+    const getClientSecret = async () => {
+      const response = await axios.post("/create-payment-intent", {
+        total: getCartTotal(cart) * 100,
+      });
+
+      setClientSecret(response.data.clientSecret);
+    };
+
+    getClientSecret().catch((err) => console.log(err));
+  }, [cart]);
 
   const cardStyle = {
     style: {
@@ -87,55 +108,55 @@ const Checkout = () => {
       setProcessing(false);
       setSucceeded(true);
 
-      // get the number of tickets ordered per product & store in new object
-      let obj = {};
-      let reqId, stock;
+      // // get the number of tickets ordered per product & store in new object
+      // let obj = {};
+      // let reqId, stock;
 
-      for (let i = 0; i < cart.length; i++) {
-        if (obj[cart[i].dbId]) {
-          obj[cart[i].dbId]++;
-        } else {
-          obj[cart[i].dbId] = 1;
-        }
-      }
+      // for (let i = 0; i < cart.length; i++) {
+      //   if (obj[cart[i].dbId]) {
+      //     obj[cart[i].dbId]++;
+      //   } else {
+      //     obj[cart[i].dbId] = 1;
+      //   }
+      // }
 
-      // obj now has product id and amount of tickets as key:value pairs
+      // // obj now has product id and amount of tickets as key:value pairs
 
-      // update number of tickets available in db // also reflected on the frontend
+      // // update number of tickets available in db // also reflected on the frontend
 
-      for (const id in obj) {
-        reqId = id;
-        stock = obj[id];
+      // for (const id in obj) {
+      //   reqId = id;
+      //   stock = obj[id];
 
-        axios
-          .post(`/update/${reqId}`, {
-            stock: stock,
-          })
-          .then((res) => {
-            console.log(res.data);
-          })
-          .catch((err) => {
-            console.log("err -->", err);
-          });
-      }
+      //   axios
+      //     .post(`/update/${reqId}`, {
+      //       stock: stock,
+      //     })
+      //     .then((res) => {
+      //       console.log(res.data);
+      //     })
+      //     .catch((err) => {
+      //       console.log("err -->", err);
+      //     });
+      // }
 
-      // add new order to db
-      axios
-        .post("/orders", {
-          cart: cart,
-          email: email,
-        })
+      // // add new order to db
+      // axios
+      //   .post("/orders", {
+      //     cart: cart,
+      //     email: email,
+      //   })
 
-        // destructure and assign the newOrder id from db -- add it to data layer.
-        .then((res) => {
-          const { _id } = res.data;
-          // dispatch(addCustomer(_id));
-          dispatch(emptyCart());
-          history.push("/order");
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      //   // destructure and assign the newOrder id from db -- add it to data layer.
+      //   .then((res) => {
+      //     const { _id } = res.data;
+      //     // dispatch(addCustomer(_id));
+      //     dispatch(emptyCart());
+      //     history.push("/order");
+      //   })
+      //   .catch((err) => {
+      //     console.log(err);
+      //   });
     }
   };
 

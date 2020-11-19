@@ -18,8 +18,6 @@ import { selectUser } from "../features/user/userSlice";
 
 const Main = () => {
   const [items, setItems] = useState([]);
-  const user = useSelector(selectUser);
-  const history = useHistory();
 
   // toast
   const notify = (name) => toast.dark(`1 ${name} ticket added to cart`);
