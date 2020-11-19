@@ -39,7 +39,9 @@ const Footer = () => {
           </a>
         </div>
       </div>
-      <p className="footer__bottom">2020 THE BIG RAFFLE ALL RIGHTS RESERVED</p>
+      <div className="footer__bottom">
+        <p>2020 THE BIG RAFFLE ALL RIGHTS RESERVED</p>
+      </div>
     </div>
   );
 };

@@ -183,7 +183,9 @@ const Checkout = () => {
         ))}
       </div>
       <div id="stripe" className="checkout__stripe">
-        <Subtotal showButton={false} />
+        <div className="checkout__subtotal">
+          <Subtotal showButton={false} />
+        </div>
         <form id="payment-form" onSubmit={handleSubmit}>
           <input
             required
@@ -199,11 +201,14 @@ const Checkout = () => {
             placeholder="address line 1"
           />
           <input required name="postcode" type="text" placeholder="postcode" />
-          <CardElement
-            id="card-element"
-            options={cardStyle}
-            onChange={handleChange}
-          />
+          <div className="checkout__element">
+            <CardElement
+              id="card-element"
+              options={cardStyle}
+              onChange={handleChange}
+            />
+          </div>
+
           <button disabled={processing || disabled || succeeded}>
             <span>{processing ? <p>processing</p> : "pay now"}</span>
           </button>

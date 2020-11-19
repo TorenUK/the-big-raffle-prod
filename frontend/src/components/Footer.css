@@ -56,7 +56,12 @@
 /* MOBILE */
 
 @media only screen and (max-width: 875px) {
+  .footer {
+    flex: 0.2;
+  }
+
   .footer__icons {
     flex: 1;
+    margin-bottom: 30px;
   }
 }
