@@ -6,6 +6,7 @@ import Welcome from "./components/Welcome";
 import Main from "./components/Main";
 import Cart from "./components/Cart";
 import Checkout from "./components/Checkout";
+import Order from "./components/Order";
 
 // other
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
@@ -24,6 +25,9 @@ function App() {
     <Router>
       <div className="app" style={style}>
         <Switch>
+          <Route path="/order">
+            <Order />
+          </Route>
           <Route path="/checkout">
             <Elements stripe={promise}>
               <Checkout />

@@ -34,7 +34,7 @@
   align-items: center;
 }
 
-.banner__right__logout > .MuiButton-root {
+.banner__right__interact > .MuiButton-root {
   width: 100px !important;
   height: 20px !important;
   margin: 15px;
@@ -43,6 +43,7 @@
   text-align: center;
 
   font-family: poppins, sans-serif;
+  font-weight: 300;
   color: white;
 
   box-shadow: 1px 1px 5px 1px black;

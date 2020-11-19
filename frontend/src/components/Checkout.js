@@ -110,6 +110,8 @@ const Checkout = () => {
       setError(null);
       setProcessing(false);
       setSucceeded(true);
+      dispatch(emptyCart());
+      history.push("/order");
 
       // // get the number of tickets ordered per product & store in new object
       // let obj = {};
@@ -205,7 +207,6 @@ const Checkout = () => {
           <button disabled={processing || disabled || succeeded}>
             <span>{processing ? <p>processing</p> : "pay now"}</span>
           </button>
-
           {error && <div>{error}</div>}
           {/* Show a success message upon completion */}
         </form>

@@ -31,18 +31,18 @@ const Banner = () => {
               <PersonOutlineOutlinedIcon />
               <p>{user}</p>
             </div>
-            <div className="banner__right__logout">
+            <div className="banner__right__interact">
               <Button
                 onClick={() => {
                   if (user) {
                     dispatch(logout());
-                    history.push("/");
                   }
                 }}
                 variant="outlined"
               >
                 logout
               </Button>
+              <Button variant="outlined">account</Button>
             </div>
           </>
         ) : (
