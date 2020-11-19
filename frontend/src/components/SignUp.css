@@ -3,10 +3,16 @@
   height: 100%;
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
   background-color: transparent;
+}
+
+.signUp > h2 {
+  text-decoration: underline;
+  font-weight: 400;
 }
 
 .signUp > form {
@@ -44,6 +50,10 @@
   color: white;
   background-color: rgb(223, 145, 2) !important;
   box-shadow: 1px 1px 5px 1px black;
+}
+
+.signUp > form > .signUp__error {
+  color: white;
 }
 /* MEDIA QUERIES */
 

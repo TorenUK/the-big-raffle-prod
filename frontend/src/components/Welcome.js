@@ -10,7 +10,13 @@ import { Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import gsap from "gsap";
 
+// redux
+import { useDispatch, useSelector } from "react-redux";
+import { login, selectUser } from "../features/user/userSlice";
+
 const Welcome = () => {
+  const user = useSelector(selectUser);
+
   useEffect(() => {
     gsap.timeline().to("#image0", {
       rotate: 360,
@@ -54,11 +60,24 @@ const Welcome = () => {
           />
         </defs>
       </svg>
-      <h1>WIN LUXURY ITEMS & CASH PRIZES</h1>
-      <div className="welcome__login">
-        <Login />
-        <SignUp />
-      </div>
+
+      {user ? (
+        <div className="welcome__signedIn">
+          <h2>signed in as:</h2>
+          <h2>{user}</h2>
+          <Link to="/main">
+            <Button variant="outlined">return to shop</Button>
+          </Link>
+        </div>
+      ) : (
+        <>
+          <h1>WIN LUXURY ITEMS & CASH PRIZES</h1>
+          <div className="welcome__login">
+            <Login />
+            <SignUp />
+          </div>
+        </>
+      )}
     </div>
   );
 };

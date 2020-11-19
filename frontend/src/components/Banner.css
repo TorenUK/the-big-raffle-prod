@@ -58,6 +58,12 @@
   text-decoration: underline;
 }
 
+.banner__signIn > a > .MuiButton-root {
+  font-family: poppins, sans-serif;
+  color: white;
+  background-color: black;
+}
+
 /* MEDIA QUERIES */
 
 /* MOBILE */

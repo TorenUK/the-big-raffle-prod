@@ -7,7 +7,7 @@ import "./Banner.css";
 import logo from "../images/logo-br.svg";
 import PersonOutlineOutlinedIcon from "@material-ui/icons/PersonOutlineOutlined";
 import { Button } from "@material-ui/core";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 // redux
 import { useSelector, useDispatch } from "react-redux";
@@ -45,7 +45,13 @@ const Banner = () => {
               </Button>
             </div>
           </>
-        ) : null}
+        ) : (
+          <div className="banner__signIn">
+            <Link to="/">
+              <Button>sign in</Button>
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );

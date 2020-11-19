@@ -21,13 +21,16 @@ import { selectUser } from "../features/user/userSlice";
 const Checkout = () => {
   const dispatch = useDispatch();
   const cart = useSelector(selectCart);
+  const user = useSelector(selectUser);
+
+  const [name, setName] = useState("");
+  const [address, setAddress] = useState("");
 
   const [succeeded, setSucceeded] = useState(false);
   const [error, setError] = useState(null);
   const [processing, setProcessing] = useState("");
   const [disabled, setDisabled] = useState(true);
   const [clientSecret, setClientSecret] = useState("");
-  const [email, setEmail] = useState("");
 
   const stripe = useStripe();
   const elements = useElements();
@@ -95,7 +98,7 @@ const Checkout = () => {
     ev.preventDefault();
     setProcessing(true);
     const payload = await stripe.confirmCardPayment(clientSecret, {
-      receipt_email: email,
+      receipt_email: user,
       payment_method: {
         card: elements.getElement(CardElement),
       },
@@ -182,18 +185,23 @@ const Checkout = () => {
         <form id="payment-form" onSubmit={handleSubmit}>
           <input
             required
-            name="email"
+            name="name"
             type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter email address"
+            onChange={(e) => setName(e.target.value)}
+            placeholder="full name"
           />
+          <input
+            required
+            name="line1"
+            type="text"
+            placeholder="address line 1"
+          />
+          <input required name="postcode" type="text" placeholder="postcode" />
           <CardElement
             id="card-element"
             options={cardStyle}
             onChange={handleChange}
           />
-
           <button disabled={processing || disabled || succeeded}>
             <span>{processing ? <p>processing</p> : "pay now"}</span>
           </button>
