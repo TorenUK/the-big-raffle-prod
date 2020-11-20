@@ -3,64 +3,50 @@
   flex: 0.2;
 
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+}
+
+.banner > .burger {
+  display: none;
 }
 
 .banner__left {
-  flex: 0.5;
+  width: 50%;
 
   display: flex;
   justify-content: center;
-  align-items: center;
-}
-
-.banner__left > h1 {
-  font-size: 2.5rem;
 }
 
 .banner__left > img {
   max-width: 50px;
-  margin: 0 10px;
-  object-fit: contain;
+  margin: 0 20px;
+}
+
+.banner__left > h1 {
+  text-transform: uppercase;
 }
 
 .banner__right {
-  flex: 0.5;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.banner__right > nav {
+  display: flex;
+}
+
+.banner__user {
+  padding: 10px;
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
 
-.banner__right__interact > .MuiButton-root {
-  width: 100px !important;
-  height: 20px !important;
-  margin: 15px;
-  padding: 0;
-  vertical-align: middle;
-  text-align: center;
-
-  font-family: poppins, sans-serif;
-  font-weight: 300;
-  color: white;
-}
-
-.banner__right__user {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.banner__right__user > p {
-  text-decoration: underline;
-}
-
-.banner__signIn > a > .MuiButton-root {
-  font-family: poppins, sans-serif;
-  color: white;
-  background-color: black;
+.banner > .mobile__nav {
+  display: none;
 }
 
 /* MEDIA QUERIES */
@@ -68,16 +54,56 @@
 /* MOBILE */
 
 @media only screen and (max-width: 875px) {
-  .banner {
-    flex: 0.3;
-    flex-direction: column;
-  }
-
-  .banner__left {
-    flex-direction: column;
-  }
-
   .banner__left > h1 {
-    font-size: 2rem;
+    display: none;
+  }
+
+  .banner__left > img {
+    max-width: 70px;
+    margin: 0 20px;
+  }
+
+  .banner__right {
+    display: none;
+  }
+
+  .banner > .burger {
+    width: 50%;
+
+    display: flex;
+    justify-content: center;
+  }
+
+  .banner > .burger > .MuiSvgIcon-root {
+    font-size: 40px;
+  }
+
+  .banner > .mobile__nav {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: black;
+    z-index: 300;
+  }
+  .banner > .mobile__nav > ul {
+    width: 100%;
+    height: 70%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    text-align: center;
   }
 }

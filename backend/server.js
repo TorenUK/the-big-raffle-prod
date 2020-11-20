@@ -46,6 +46,11 @@ app.post("/create-payment-intent", async (req, res) => {
   });
 });
 
+// routes
+app.get("/", (req, res) => {
+  res.status(200).send("welcome to the tbr server");
+});
+
 app.use(itemRoutes);
 app.use(authRoutes);
 app.use(orderRoutes);
