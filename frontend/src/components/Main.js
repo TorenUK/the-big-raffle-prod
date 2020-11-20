@@ -36,6 +36,7 @@ const Main = () => {
   return (
     <div className="main">
       <Banner />
+      <h1>current prizes</h1>
       <div className="main__items">
         {items.map((item) => (
           <>
@@ -59,6 +60,7 @@ const Main = () => {
           </>
         ))}
       </div>
+
       <Footer />
     </div>
   );

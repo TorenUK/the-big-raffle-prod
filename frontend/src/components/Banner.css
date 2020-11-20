@@ -45,6 +45,23 @@
   align-items: center;
 }
 
+.banner__user > .MuiButton-root {
+  height: 30px;
+
+  font-family: poppins, sans-serif;
+  color: white;
+  background-color: #000000;
+  font-weight: 500;
+}
+.banner__user > a > .MuiButton-root {
+  height: 30px;
+
+  font-family: poppins, sans-serif;
+  color: white;
+  background-color: #000000;
+  font-weight: 500;
+}
+
 .banner > .mobile__nav {
   display: none;
 }
