@@ -126,9 +126,13 @@ const Checkout = () => {
         .then((response) => {
           dispatch(newOrder(response.data));
         })
+        .then(() => {
+          dispatch(emptyCart());
+        })
+        .then(() => {
+          history.push("/order");
+        })
         .catch((err) => console.log(err));
-      dispatch(emptyCart());
-      history.push("/order");
     }
   };
 
