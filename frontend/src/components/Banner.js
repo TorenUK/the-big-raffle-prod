@@ -40,6 +40,7 @@ const Banner = () => {
               <Button
                 onClick={() => {
                   dispatch(logout());
+                  history.push("/main");
                 }}
               >
                 logout
