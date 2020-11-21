@@ -22,20 +22,25 @@ const Order = () => {
   return (
     <div className="order">
       <Banner />
-      <div className="order__container">
-        <div className="order__top">
-          <h1>thanks for your order!</h1>
-          <h3>{user}</h3>
+      {order ? (
+        <div className="order__container">
+          <div className="order__top">
+            <h1>thanks for your order!</h1>
+            <h3>{user}</h3>
+          </div>
+          <div className="order__id">
+            <h2>{order.name}</h2>
+            <h3>order number: {order.order}</h3>
+          </div>
+          <div className="order__address">
+            <h3>{order.address.line1}</h3>
+            <h3>{order.address.postcode}</h3>
+          </div>
         </div>
-        <div className="order__id">
-          <h2>{order.name}</h2>
-          <h3>order number: {order.order}</h3>
-        </div>
-        <div className="order__address">
-          <h3>{order.address.line1}</h3>
-          <h3>{order.address.postcode}</h3>
-        </div>
-      </div>
+      ) : (
+        <div>hello no order</div>
+      )}
+
       <Footer />
     </div>
   );

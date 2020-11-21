@@ -17,12 +17,13 @@ import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { useSelector, useDispatch } from "react-redux";
 import { selectCart, emptyCart } from "../features/cart/cartSlice";
 import { selectUser } from "../features/user/userSlice";
-import { newOrder } from "../features/order/orderSlice";
+import { selectOrder, newOrder } from "../features/order/orderSlice";
 
 const Checkout = () => {
   const dispatch = useDispatch();
   const cart = useSelector(selectCart);
   const user = useSelector(selectUser);
+  const order = useSelector(selectOrder);
 
   const [name, setName] = useState("");
   const [line1, setLine1] = useState("");
@@ -129,12 +130,14 @@ const Checkout = () => {
         .then(() => {
           dispatch(emptyCart());
         })
-        .then(() => {
-          history.push("/order");
-        })
         .catch((err) => console.log(err));
     }
   };
+
+  if (order) {
+    history.push("/order");
+  } else {
+  }
 
   return (
     <div className="checkout">
