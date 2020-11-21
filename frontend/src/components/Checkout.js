@@ -17,6 +17,7 @@ import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { useSelector, useDispatch } from "react-redux";
 import { selectCart, emptyCart } from "../features/cart/cartSlice";
 import { selectUser } from "../features/user/userSlice";
+import { newOrder } from "../features/order/orderSlice";
 
 const Checkout = () => {
   const dispatch = useDispatch();
@@ -122,9 +123,10 @@ const Checkout = () => {
           },
           items: cart,
         })
-        .then((response) => console.log(response.data))
+        .then((response) => {
+          dispatch(newOrder(response.data));
+        })
         .catch((err) => console.log(err));
-
       dispatch(emptyCart());
       history.push("/order");
     }

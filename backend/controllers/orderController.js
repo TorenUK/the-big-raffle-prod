@@ -27,7 +27,12 @@ const order_create = async (req, res) => {
       items,
       status: "created",
     });
-    res.status(201).send({ name: name, order: order._id });
+    res.status(201).send({
+      name: name,
+      order: order._id,
+      address: address,
+      items: items,
+    });
   } catch (err) {
     const errors = handleErrors(err);
     res.status(400).json({ errors });
