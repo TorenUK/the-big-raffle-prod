@@ -25,7 +25,12 @@ const Order = () => {
       {order ? (
         <div className="order__container">
           <div className="order__top">
-            <h1>thanks for your order!</h1>
+            {order.items.length > 1 ? (
+              <h1>your entries are in!</h1>
+            ) : (
+              <h1>your entry is in!</h1>
+            )}
+            <h3>{order.items.length} ticket(s)</h3>
             <h3>{user}</h3>
           </div>
           <div className="order__id">
