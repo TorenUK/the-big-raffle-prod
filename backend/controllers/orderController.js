@@ -1,4 +1,4 @@
-// order_create
+// order_create // order_find_all // order_find_one
 
 const Order = require("../models/dbOrders");
 
@@ -25,6 +25,7 @@ const order_create = async (req, res) => {
       name,
       address,
       items,
+      status: "created",
     });
     res.status(201).send({ name: name, order: order._id });
   } catch (err) {
@@ -33,6 +34,20 @@ const order_create = async (req, res) => {
   }
 };
 
+const order_find = async (req, res) => {
+  const email = req.query.email;
+  console.log(email, "<- customer");
+
+  await Order.findOne({ email: email }, (err, result) => {
+    if (err) {
+      res.send(err);
+    } else {
+      res.status(200).send(result);
+    }
+  });
+};
+
 module.exports = {
   order_create,
+  order_find,
 };

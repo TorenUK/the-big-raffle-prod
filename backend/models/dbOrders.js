@@ -12,6 +12,7 @@ const orderSchema = new mongoose.Schema({
     required: true,
   },
   items: Array,
+  status: String,
 });
 
 module.exports = mongoose.model("order", orderSchema);
