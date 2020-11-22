@@ -17,12 +17,14 @@ const Login = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [processing, setProcessing] = useState(false);
 
   const [emailErr, setEmailErr] = useState("");
   const [passwordErr, setPasswordErr] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setProcessing(true);
 
     // reset errors
     setEmailErr("");
@@ -41,6 +43,7 @@ const Login = () => {
       if (data.errors) {
         setEmailErr(data.errors.email);
         setPasswordErr(data.errors.password);
+        setProcessing(false);
       }
       if (data.user) {
         dispatch(login(email));
@@ -78,7 +81,9 @@ const Login = () => {
           required
         />
         <div className="password error">{passwordErr}</div>
-        <Button onClick={handleSubmit}>Login</Button>
+        <Button onClick={handleSubmit}>
+          {processing ? "LOADING..." : "LOGIN"}
+        </Button>
       </form>
     </div>
   );

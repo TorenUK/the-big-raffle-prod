@@ -72,7 +72,6 @@ const SignUp = () => {
           name="email"
           type="email"
           placeholder="email"
-          autoComplete="email"
           required
         />
         <div className="signUp__error">{emailErr}</div>
@@ -83,7 +82,6 @@ const SignUp = () => {
           name="password"
           type="password"
           placeholder="password"
-          autoComplete="true"
           required
         />
         <div className="signUp__error">{passwordErr}</div>

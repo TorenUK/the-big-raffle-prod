@@ -30,14 +30,14 @@ const Order = () => {
             ) : (
               <h1>your entry is in!</h1>
             )}
-            <h3>{order.items.length} ticket(s)</h3>
             <h3>{user}</h3>
+            <h3>{order.items.length} ticket(s)</h3>
           </div>
           <div className="order__id">
-            <h2>{order.name}</h2>
             <h3>order number: {order.order}</h3>
           </div>
           <div className="order__address">
+            <h3>{order.name}</h3>
             <h3>{order.address.line1}</h3>
             <h3>{order.address.postcode}</h3>
           </div>

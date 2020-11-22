@@ -18,6 +18,10 @@
   justify-content: space-around;
 }
 
+.order h3 {
+  text-decoration: underline;
+}
+
 /* MEDIA QUERIES */
 
 /* MOBILE */
